@@ -45,7 +45,8 @@
             randomCharacter += characters.charAt(Math.floor(Math.random() * charactersLength));
         }
         
-        idNew = toUpperCase(idNew + randomCharacter);
+        idNew = idNew + randomCharacter;
+        idNew = idNew.toUpperCase();
             
         document.getElementById("demo").innerHTML = idNew;
         </script>
