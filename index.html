@@ -34,8 +34,19 @@
         <p>Refresh this page to get new ID</p>
 
         <script>
+        const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        const charactersLength = characters.length;
+        let randomCharacter = '';
+
         let getEpoch = parseInt((Date.now())/1000);
         let idNew = getEpoch.toString(16);
+
+        for ( let i = 0; i < 2; i++ ) {
+            randomCharacter += characters.charAt(Math.floor(Math.random() * charactersLength));
+        }
+        
+        idNew = toUpperCase(idNew + randomCharacter);
+            
         document.getElementById("demo").innerHTML = idNew;
         </script>
       
