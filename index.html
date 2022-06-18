@@ -41,13 +41,19 @@
         let getEpoch = parseInt((Date.now())/1000);
         let idNew = getEpoch.toString(16);
 
-        for ( let i = 0; i < 2; i++ ) {
-            randomCharacter += characters.charAt(Math.floor(Math.random() * charactersLength));
-        }
-        
-        idNew = idNew + randomCharacter;
-        idNew = idNew.toUpperCase();
+        // Convert to base64 without padding
+        var hexArray = idNew
+            .replace(/\r|\n/g, "")
+            .replace(/([\da-fA-F]{2}) ?/g, "0x$1 ")
+            .replace(/ +$/, "")
+            .split(" ");
             
+        var byteString = String.fromCharCode.apply(null, hexArray);
+        var base64string = window.btoa(byteString);
+            base64string = base64string.replaceAll("=", "");
+        
+            idNew = base64string;
+                       
         document.getElementById("demo").innerHTML = idNew;
         </script>
       
