@@ -52,7 +52,8 @@
         var base64string = window.btoa(byteString);
             base64string = base64string.replaceAll("=", "");
         
-            idNew = base64string;
+            idNew = base64string.replace("+", "_");
+            idNew = idNew.replace("/", "=");
                        
         document.getElementById("demo").innerHTML = idNew;
         </script>
